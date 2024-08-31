@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>HomePage</title>
+  </head>
+  <style>
+    .container{
+      display: flex;
+    }
+    .card {
+      /* flex-direction: row; */
+      flex-wrap: wrap;
+      margin: 0px 12px;
+    }
+  </style>
+  <body>
+    <%- include('./partials/nav')%> 
+    <!-- <%= JSON.stringify(blogs) %> -->
+    <div class="container mt-3">
+      <% blogs.forEach(blog => { %>
+      <div class="card" style="width: 18rem">
+        <img
+          class="card-img-top"
+          src="<%= blog.coverImageURL %>"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="/blog/<%= blog._id %>" class="btn btn-primary">View Blog</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <%- include('./partials/script') %>
+  </body>
+</html>
